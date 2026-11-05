@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BW08 Store | Quản trị</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body class="admin-page">
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="index.html">BW08<span>ADMIN</span></a>
+            <a href="index.html" class="btn btn-light">Quay lại cửa hàng</a>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        <section id="admin-login-section" class="login-card">
+            <p class="eyebrow">KHU VỰC QUẢN TRỊ</p>
+            <h1>Đăng nhập Admin</h1>
+            <p class="muted">Sử dụng tài khoản quản trị mẫu trong data/employees.json.</p>
+            <form id="admin-login-form">
+                <label for="admin-username">Tên đăng nhập</label>
+                <input type="text" id="admin-username" required autocomplete="username">
+                <label for="admin-password">Mật khẩu</label>
+                <input type="password" id="admin-password" required autocomplete="current-password">
+                <p class="field-error" id="login-error"></p>
+                <button type="submit" class="btn btn-primary btn-full">Đăng nhập</button>
+            </form>
+            <p class="hint">Tài khoản mẫu: admin / admin123</p>
+        </section>
+
+        <section id="admin-dashboard" class="dashboard hidden">
+            <div class="dashboard-heading">
+                <div>
+                    <p class="eyebrow">TỔNG QUAN KINH DOANH</p>
+                    <h1>Dashboard quản trị</h1>
+                    <p class="muted" id="admin-welcome"></p>
+                </div>
+                <button type="button" class="btn btn-light" id="admin-logout">Đăng xuất</button>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card"><span>Tổng đơn hàng</span><strong id="stat-order-count">0</strong></article>
+                <article class="stat-card"><span>Tổng doanh thu</span><strong id="stat-revenue">0 ₫</strong></article>
+                <article class="stat-card"><span>Sản phẩm đang quản lý</span><strong id="stat-product-count">0</strong></article>
+            </div>
+
+            <section class="admin-panel">
+                <h2>Sản phẩm bán chạy</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Sản phẩm</th><th>Số lượng đã bán</th><th>Doanh thu</th></tr></thead>
+                        <tbody id="best-seller-body"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="admin-panel">
+                <div class="panel-heading">
+                    <h2>Danh sách đơn hàng</h2>
+                    <button type="button" class="btn btn-light" id="reload-orders">Tải lại dữ liệu</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Mã đơn</th><th>Ngày tạo</th><th>Khách hàng</th><th>Nhân viên</th><th>Tổng tiền</th><th>Trạng thái</th></tr></thead>
+                        <tbody id="orders-table-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

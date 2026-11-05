@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BW08 Store | Cửa hàng trực tuyến</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="logo" href="index.html">BW08<span>STORE</span></a>
+
+            <form class="search-bar" id="quick-search-form">
+                <input type="search" id="quick-search" placeholder="Tìm tên sản phẩm..." aria-label="Tìm sản phẩm">
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            </form>
+
+            <button type="button" class="btn btn-cart" id="open-cart">
+                Giỏ hàng <span class="cart-count" id="cart-count">0</span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="active">Trang chủ</a>
+            <a href="#product-section">Sản phẩm</a>
+            <a href="#site-footer">Liên hệ</a>
+            <a href="admin.html">Quản trị viên</a>
+        </div>
+    </nav>
+
+    <main class="page-layout">
+        <aside class="filter-panel">
+            <h2>Tìm kiếm nâng cao</h2>
+            <form id="filter-form">
+                <label for="min-price">Giá thấp nhất (VNĐ)</label>
+                <input type="number" id="min-price" min="0" max="5000000" step="10000" placeholder="Ví dụ: 100000">
+
+                <label for="max-price">Giá cao nhất (VNĐ)</label>
+                <input type="number" id="max-price" min="0" max="5000000" step="10000" placeholder="Giá tối đa">
+
+                <label for="filter-color">Màu sắc</label>
+                <select id="filter-color">
+                    <option value="">Tất cả màu</option>
+                    <option value="Đen">Đen</option>
+                    <option value="Trắng">Trắng</option>
+                    <option value="Xanh">Xanh</option>
+                    <option value="Be">Be</option>
+                    <option value="Nâu">Nâu</option>
+                    <option value="Đỏ">Đỏ</option>
+                </select>
+
+                <label for="filter-rating">Đánh giá tối thiểu</label>
+                <input type="number" id="filter-rating" min="1" max="5" step="1" placeholder="1 - 5">
+
+                <label for="filter-category">Danh mục</label>
+                <select id="filter-category">
+                    <option value="">Tất cả danh mục</option>
+                    <option value="Thời trang">Thời trang</option>
+                    <option value="Phụ kiện">Phụ kiện</option>
+                    <option value="Giày dép">Giày dép</option>
+                </select>
+
+                <button class="btn btn-primary btn-full" type="submit">Áp dụng bộ lọc</button>
+                <button class="btn btn-light btn-full" type="reset" id="reset-filter">Xóa bộ lọc</button>
+            </form>
+        </aside>
+
+        <section class="product-section" id="product-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">BỘ SƯU TẬP MỚI</p>
+                    <h1>Sản phẩm nổi bật</h1>
+                </div>
+                <p id="product-result-count" class="muted">Đang tải dữ liệu...</p>
+            </div>
+
+            <!-- Skeleton được hiển thị trước khi fetch XML hoàn tất. -->
+            <div id="product-skeleton" class="product-grid">
+                <div class="skeleton-card"><div class="skeleton-image"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+                <div class="skeleton-card"><div class="skeleton-image"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+                <div class="skeleton-card"><div class="skeleton-image"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+                <div class="skeleton-card"><div class="skeleton-image"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+            </div>
+
+            <div id="product-list-container" class="product-grid" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <footer id="site-footer" class="site-footer">
+        <p><strong>BW08 STORE</strong> - Website thực hành môn Phát triển Web Kinh doanh.</p>
+        <p>Võ Trần Như Ý - K244161828</p>
+    </footer>
+
+    <!-- Lớp phủ mini-cart. -->
+    <div class="overlay" id="cart-overlay">
+        <section class="mini-cart-panel" aria-labelledby="mini-cart-title">
+            <div class="modal-heading">
+                <h2 id="mini-cart-title">Giỏ hàng của bạn</h2>
+                <button type="button" class="icon-button" id="close-cart" aria-label="Đóng">×</button>
+            </div>
+            <div id="mini-cart-content"></div>
+            <div class="cart-summary">
+                <p>Tổng cộng: <strong id="cart-total">0 ₫</strong></p>
+                <button type="button" class="btn btn-primary btn-full" id="checkout-button">Tiến hành thanh toán</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal thanh toán. -->
+    <div class="overlay" id="checkout-overlay">
+        <section class="form-modal" aria-labelledby="checkout-title">
+            <div class="modal-heading">
+                <h2 id="checkout-title">Thông tin giao hàng</h2>
+                <button type="button" class="icon-button" id="close-checkout" aria-label="Đóng">×</button>
+            </div>
+            <form id="checkout-form" novalidate>
+                <label for="checkout-name">Họ và tên</label>
+                <input type="text" id="checkout-name" required minlength="2" placeholder="Nguyễn Văn A">
+                <small class="field-error" id="checkout-name-error"></small>
+
+                <label for="checkout-email">Email</label>
+                <input type="email" id="checkout-email" required placeholder="name@example.com">
+                <small class="field-error" id="checkout-email-error"></small>
+
+                <label for="checkout-phone">Số điện thoại</label>
+                <input type="tel" id="checkout-phone" required placeholder="0901234567">
+                <small class="field-error" id="checkout-phone-error"></small>
+
+                <label for="checkout-address">Địa chỉ giao hàng</label>
+                <textarea id="checkout-address" required minlength="8" rows="3" placeholder="Số nhà, đường, phường/xã, tỉnh/thành"></textarea>
+                <small class="field-error" id="checkout-address-error"></small>
+
+                <button type="submit" class="btn btn-primary btn-full">Xác nhận đặt hàng</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Modal dùng chung cho xem nhanh và chi tiết đánh giá. -->
+    <div class="overlay" id="detail-overlay">
+        <section class="detail-modal">
+            <div class="modal-heading">
+                <h2 id="detail-title">Thông tin sản phẩm</h2>
+                <button type="button" class="icon-button" id="close-detail" aria-label="Đóng">×</button>
+            </div>
+            <div id="detail-content"></div>
+        </section>
+    </div>
+</body>
+</html>

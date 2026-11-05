@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders>
+    <order>
+        <order_id>BW-20261001-001</order_id>
+        <created_at>2026-10-01</created_at>
+        <employee>Nguyễn Văn Admin</employee>
+        <customer>Nguyễn Minh Anh</customer>
+        <items>
+            <item><product_id>P001</product_id><product_title>Áo thun Essential Cotton</product_title><price>259000</price><quantity>2</quantity><variant>Trắng</variant></item>
+            <item><product_id>P005</product_id><product_title>Nón lưỡi trai Minimal</product_title><price>189000</price><quantity>1</quantity><variant>Đen</variant></item>
+        </items>
+        <status>Hoàn thành</status>
+    </order>
+    <order>
+        <order_id>BW-20261002-002</order_id>
+        <created_at>2026-10-02</created_at>
+        <employee>Nguyễn Văn Admin</employee>
+        <customer>Trần Gia Hân</customer>
+        <items>
+            <item><product_id>P004</product_id><product_title>Sneaker Everyday</product_title><price>799000</price><quantity>1</quantity><variant>Trắng</variant></item>
+            <item><product_id>P001</product_id><product_title>Áo thun Essential Cotton</product_title><price>259000</price><quantity>1</quantity><variant>Đen</variant></item>
+        </items>
+        <status>Đang giao</status>
+    </order>
+    <order>
+        <order_id>BW-20261004-003</order_id>
+        <created_at>2026-10-04</created_at>
+        <employee>Nguyễn Văn Admin</employee>
+        <customer>Lê Hoàng Nam</customer>
+        <items>
+            <item><product_id>P002</product_id><product_title>Sơ mi Linen Classic</product_title><price>429000</price><quantity>2</quantity><variant>Xanh</variant></item>
+        </items>
+        <status>Hoàn thành</status>
+    </order>
+    <order>
+        <order_id>BW-20261006-004</order_id>
+        <created_at>2026-10-06</created_at>
+        <employee>Nguyễn Văn Admin</employee>
+        <customer>Phạm Thu Hà</customer>
+        <items>
+            <item><product_id>P003</product_id><product_title>Túi đeo chéo Urban</product_title><price>589000</price><quantity>1</quantity><variant>Nâu</variant></item>
+            <item><product_id>P008</product_id><product_title>Giày Canvas Basic</product_title><price>459000</price><quantity>1</quantity><variant>Trắng</variant></item>
+        </items>
+        <status>Chờ xác nhận</status>
+    </order>
+</orders>

@@ -1,0 +1,14 @@
+[
+    {
+        "username": "admin",
+        "password": "admin123",
+        "fullname": "Nguyễn Văn Admin",
+        "role": "admin"
+    },
+    {
+        "username": "manager",
+        "password": "manager123",
+        "fullname": "Trần Thị Quản Lý",
+        "role": "admin"
+    }
+]
