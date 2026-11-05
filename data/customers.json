@@ -1,1 +1,30 @@
-
+[
+    {
+        "username": "minhanh",
+        "password": "customer123",
+        "fullname": "Nguyễn Minh Anh",
+        "email": "minhanh@example.com",
+        "phone": "0901234567"
+    },
+    {
+        "username": "giahan",
+        "password": "customer123",
+        "fullname": "Trần Gia Hân",
+        "email": "giahan@example.com",
+        "phone": "0912345678"
+    },
+    {
+        "username": "hoangnam",
+        "password": "customer123",
+        "fullname": "Lê Hoàng Nam",
+        "email": "hoangnam@example.com",
+        "phone": "0934567890"
+    },
+    {
+        "username": "thuha",
+        "password": "customer123",
+        "fullname": "Phạm Thu Hà",
+        "email": "thuha@example.com",
+        "phone": "0987654321"
+    }
+]
